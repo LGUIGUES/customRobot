@@ -1,0 +1,63 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+	<title>Your customized Robot</title>
+{% endblock %}
+
+{% block content %}
+
+	<div class="flip-box">
+		<div
+			id="animationBox" class="box-containt">
+
+			<!-- Back panel -->
+			<div class="form-panel-control">
+				<form id="formInputControlPanel" class="form-input-control" action="index.php?page=createRobot" method="POST">
+					<p class="shadow-name-title text-center pt-2 fw-bold bg-light bg-opacity-50">Custom name Robot</p>
+					<p class="name-title text-center pt-3 fw-bold">Custom name Robot</p>
+					<div class="form-floating mx-auto mb-3">
+						<input type="text" class="form-control" id="textInput" name="customNameRobot" value="{{ formDataName == formDataName ? formDataName : ' ' }}">
+						<label for="textInput">Format AA-0000</label>
+					</div>
+					<select class="form-select mx-auto mb-3" name="customMoralityRobot" id="selectInput">
+						<option selected>Choose morality of your robot</option>
+						<option value="1">Metal killer</option>
+						<option value="2">Servile slave</option>
+						<option value="3">Random morality</option>
+					</select>
+					<div class="form-group text-center">
+						<button class="btn btn-primary smw" name="custom" type="submit">Custom Robot</button>
+						<button class="btn btn-secondary smw" name="random" type="submit">Random Robot</button>
+					</div>
+				</form>
+				<p class="txt-error text-white bg-danger bg-opacity-50 text-center fw-bold p-1 {{ errorName is not empty ? '' : 'box-hide' }} ">{{ errorName == errorName ? errorName : '' }}<br>{{ errorMorality is not empty ? errorMorality : ' ' }}</p>
+			</div>
+
+		</div>
+	</div>
+
+	{% if robotName is not empty %}
+		<div class="text-center show-robot box-anim-scale">
+			<div class="bubble">
+				<div class="triangle"></div>
+			</div>	
+				<div class="col-lg-8 show-txt-robot">
+					<p class="txt-hello">Hello, human !
+						<strong class="txt-name-robot">I'm
+							{{ robotName }}</strong>
+					</p>
+					<p class="txt-date">We are the
+						{{ date }}, it is
+						{{ time }}</p>
+					<p class="txt-number">I'have choiced the number
+						<strong>{{ number }}</strong>.</p>
+					<p class="txt-before-invert-name">My name backwards is written
+						<strong class="txt-invert-name-robot">{{ invNameRobot }}</strong>
+					</p>
+					<p class="txt-rotate text-white fw-bold">Ah, Ah, Ah !</p>
+				</div>			
+			<p class="txt-morality-robot fw-bold bg-light opacity-75 {{ classText }}">{{ moralityRobot }}</p>
+		</div>
+	{% endif %}
+
+{% endblock %}

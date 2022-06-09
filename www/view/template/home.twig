@@ -1,0 +1,64 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+	<title>Home</title>
+{% endblock %}
+
+{% block content %}
+<section>
+	
+	<div class="flip-box">
+		<div id="animationBox" class="box-containt">
+
+            <!-- Front panel -->
+			<div class="text-center start-panel-control">
+				<div class="col-lg-8 mx-auto">
+					<div class="start-screen">
+						<p id="showRules" class="link-js-rules mt-3 mb-0 pb-0 fw-bold">Read the rules</p>
+						<p class="pt-0 mt-0 mb-0 fs-6 fw-bold">You are ready ?</p>
+						<p class="pt-0 mt-0 mb-0 fs-5 fw-bold">Click start !</p>
+						<button id="start" class="btn btn-success text-uppercase fw-bold">Start</button>
+					</div>
+				</div>
+				<p class="txt-result text-white fw-bold">
+					We do not store any data. They serve only for the result.
+				</p>
+			</div>
+
+			<!-- Back panel -->
+			<div class="start-form-panel-control">
+				<form id="formInputControlPanel" class="form-input-control" action="index.php?page=createRobot" method="POST">
+					<p class="shadow-name-title text-center pt-2 fw-bold bg-light bg-opacity-50">Custom name Robot</p>
+                    <p class="name-title text-center pt-3 fw-bold">Custom name Robot</p>
+					<div class="form-floating mx-auto mb-3">
+						<input type="text" class="form-control" id="textInput" name="customNameRobot" value="">
+						<label for="textInput">Format AA-0000</label>
+						<p class="text-danger">{{ errorName == errorName ? errorName : '' }}
+						</p>
+					</div>
+					<select class="form-select mx-auto" name="customMoralityRobot" id="selectInput">
+						<option selected>Choose morality of your robot</option>
+						<option value="1">Metal killer</option>
+						<option value="2">Servile slave</option>
+						<option value="3">Random morality</option>
+					</select>
+					<p class="text-danger">{{ errorMorality is not empty ? errorMorality : ' ' }}
+					</p>
+					<div class="form-group text-center">
+						<button class="btn btn-primary smw" name="custom" type="submit">Custom Robot</button>
+						<button class="btn btn-secondary smw" name="random" type="submit">Random Robot</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Rules modal -->
+	<div id="modalRules" class="mobile-rules-modal box-hide">
+		<span id="hideRules" class="icon-close text-white"></span>
+		<p class="m-2 text-white">You will be able to customize your robot by giving it a name and choosing a morality. When you are ready, click on start !</p>
+	</div>
+
+</section>
+{% endblock %}
